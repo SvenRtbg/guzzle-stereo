@@ -5,17 +5,17 @@ language: php
 matrix:
   fast_finish: true
   include:
-    - 5.5
+    - php: 5.5
       env: 
       - deps=high
-    - 5.6
-    - 5.6
+    - php: 5.6
+    - php: 5.6
       env: 
       - deps=high
-    - 5.6
+    - php: 5.6
       env: 
       - deps=low
-    - 7.0
+    - php: 7.0
   allow_failures:
     - php: 5.5
     - php: 7.0
