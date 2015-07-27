@@ -2,12 +2,18 @@ language: php
 
 php:
     - 5.5
+      env: 
+      - deps=high
     - 5.6
     - 7.0
 
 before_script:
     - composer self-update
-    - composer install --prefer-source --no-interaction
+    
+install:
+    - if [[ "$deps" = "high" ]]; then travis_retry composer --no-interaction --prefer-source update: fi;
+    - if [[ "$deps" = "low" ]]; then travis_retry composer --no-interaction --prefer-lowest --prefer-source update: fi;
+    - travis_retry composer install --prefer-source --no-interaction
 
 script:
     - ./vendor/bin/phpspec run -f pretty
