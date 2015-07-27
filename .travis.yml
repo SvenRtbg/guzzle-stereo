@@ -21,12 +21,12 @@ matrix:
     - php: 7.0
 
 before_install:
-    - composer self-update
+  - composer self-update
     
 install:
-    - if [[ "$deps" = "high" ]]; then travis_retry composer --no-interaction --prefer-source update: fi;
-    - if [[ "$deps" = "low" ]]; then travis_retry composer --no-interaction --prefer-lowest --prefer-source update: fi;
-    - travis_retry composer install --prefer-source --no-interaction
+  - if [[ "$deps" = "high" ]]; then travis_retry composer --no-interaction --prefer-source update; fi;
+  - if [[ "$deps" = "low" ]]; then travis_retry composer --no-interaction --prefer-lowest --prefer-source update; fi;
+  - travis_retry composer install --prefer-source --no-interaction
 
 script:
     - ./vendor/bin/phpspec run -f pretty
